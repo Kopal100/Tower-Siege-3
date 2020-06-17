@@ -34,16 +34,16 @@ function draw() {
   background(0,255,255);
   Engine.update(engine);
   
-ground.display();
-ball.display();
-sling.display();
-ball1.display();
-ball2.display();
-ball3.display();
-ball4.display();
-ball5.display();
-ball6.display();
-rod.display();
+  ground.display();
+  ball.display();
+  sling.display();
+  ball1.display();
+  ball2.display();
+  ball3.display();
+  ball4.display();
+  ball5.display();
+  ball6.display();
+  rod.display();
 
   
 }
@@ -54,4 +54,10 @@ function mouseDragged(){
   }
   function mouseReleased(){
     sling.fly();
+  }
+
+  function keyPressed(){
+    if(keyCode===32){
+      sling.attach(ball.body);
+    }
   }
