@@ -3,8 +3,14 @@ class BBox extends BaseClass {
       super(x,y,width,height);
       this.Visiblity = 255;
     }
+Score(){
+if(this.Visiblity<200 && this.Visiblity>-50){
+  score++;
+}
+}
+
    display(){
-    console.log(this.body.speed);
+   // console.log(this.body.speed);
     //rect(this.body.position.x,this.body.position.y,this.width,this.height)
     if(this.body.speed < 3){
       super.display();
@@ -18,6 +24,8 @@ else{
   //rect(this.body.position.x,this.body.position.y,this.width,this.height);
   pop();
 }
-   }
-  
+ }
+ 
+ 
+
   };

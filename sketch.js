@@ -8,7 +8,8 @@ var ground
 var ball,sling;
 var ball1,ball2,ball3,ball4,ball5;
 var rod;
-
+var score = 0;
+var backgroundCC;
 
 function setup(){
     var canvas = createCanvas(1200,400);
@@ -31,19 +32,42 @@ function setup(){
 
 
 function draw() {
-  background(0,255,255);
+  if (backgroundCC){
+    background();
+  }
+ 
   Engine.update(engine);
   
+  
+  textSize(35);
+  fill("green")
+  text("SCORE : "+score,500,40);
+ 
   ground.display();
   ball.display();
   sling.display();
   ball1.display();
+  ball1.Score();
+
   ball2.display();
+  ball2.Score();
+
   ball3.display();
+  ball3.Score();
+
   ball4.display();
+  ball4.Score();
+
   ball5.display();
+  ball5.Score();
+
   ball6.display();
+  ball6.Score();
+
+
   rod.display();
+  
+  
 
   
 }
@@ -58,6 +82,22 @@ function mouseDragged(){
 
   function keyPressed(){
     if(keyCode===32){
+      // Matter.body.setPosition(ball.body,{x:150,y:100});
       sling.attach(ball.body);
     }
   }
+  async function changeBackgroundImg(){
+    var response = await fetch("http://worldtimeapi.org/api/timezone/Asia/Tokyo")
+    var responseJSON =await response.json();
+    
+    var datetime = responseJSON.datetime;
+    var hour = datetime.slice(11,13);
+    if(hour>=06 && hour<=19){
+      backgroundCC = "yellow";
+    }
+    else{
+      backgroundCC = "blue"
+    }
+    
+    
+    }
